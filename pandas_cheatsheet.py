@@ -88,9 +88,9 @@ variable_name = df.sort_values(by=['column_1', 'column_2']) # we can also sort b
 # so we can name that copy to a variable or just print directly using df.method_name()
 
 # DATA TYPES AND MISSING DATA
-df.dtypes() # this will print the data types of every column in the DataFrame (e.g object, int64, float64 etc)
+df.dtypes # this will print the data types of every column in the DataFrame (e.g object, int64, float64 etc)
 # but we can access individual column datatype too 
-df.column_name.dtype()
+df.column_name.dtype
 
 df.column_name.astype('int64')  # this method is used to convert the datatype to another datatype (float64 -> int64)
 
@@ -102,3 +102,7 @@ df[pd.isnull(df.column_name)]   # this will fetch all the rows with column_name 
 df.column_name.fillna('value')  # this will fill all the Null(NAN) with some value
 
 df.column_name.replace('previous_value', 'new_value')   # this will replace all the rows consisting of previous values for that column to new values
+
+# Note: using .count() to find the count of values will drop the NULL values (exclude), meanwhile .size() will include it
+# so use df.groupby('column_name', dropna=False).size().fillna('Unknown')
+# OR the simplest method is to first fill the Null values then count 
