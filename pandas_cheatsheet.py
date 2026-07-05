@@ -86,3 +86,19 @@ variable_name = df.sort_values(by=['column_1', 'column_2']) # we can also sort b
 
 # Note: All these methods such as mapping, apply, groupby, and sort_values() do not make changes in the original dataset instead it makes a copy
 # so we can name that copy to a variable or just print directly using df.method_name()
+
+# DATA TYPES AND MISSING DATA
+df.dtypes() # this will print the data types of every column in the DataFrame (e.g object, int64, float64 etc)
+# but we can access individual column datatype too 
+df.column_name.dtype()
+
+df.column_name.astype('int64')  # this method is used to convert the datatype to another datatype (float64 -> int64)
+
+# Note: Index column has a fixed datatype of an integer (int64)
+
+df[pd.isnull(df.column_name)]   # this will fetch all the rows with column_name == NaN
+# pd.notnull (is the opposite of it)
+
+df.column_name.fillna('value')  # this will fill all the Null(NAN) with some value
+
+df.column_name.replace('previous_value', 'new_value')   # this will replace all the rows consisting of previous values for that column to new values
