@@ -66,3 +66,23 @@ def func(column_name):
     return (column_name * 2)
 
 variable_name = df.column_name.apply(func)  # this will call the function and pass the column_name and modify each row value for that column
+
+# GROUPING AND SORTING
+df.groupby('column_name').column_name.count()   # this will print the dataset by grouping the column along with their counts (similar to .value_counts())
+df.groupby(['column_1', 'column_2']).apply(lambda df: df.loc[df.column_name.idxmax()])   # this will group the 2 columns together along with all the columns having the maximum value in column_name 
+
+# another important method of groupby() is agg([]) which prints the statistical values like length, max, min etc
+df.groupby('column_name').column_1.agg([len, max, min]) # so this will group the data by column_name and print the length max and min for column_1 along with the grouped column
+
+df.reset_index()
+# or
+variable_name.reset_index() # this will replace current row index with the default integer index (0,1,2,....n)
+
+variable_name.sort_index()   # this will sort the dataset by index values (ascending default)
+
+variable_name = df.sort_values(by='column_name') # this will sort the dataset by column_name (ascending=True by default)
+variable_name = df.sort_values(by='column_name', ascending=False) # this will sort the dataset by column_name in descending order
+variable_name = df.sort_values(by=['column_1', 'column_2']) # we can also sort by multiple columns
+
+# Note: All these methods such as mapping, apply, groupby, and sort_values() do not make changes in the original dataset instead it makes a copy
+# so we can name that copy to a variable or just print directly using df.method_name()
