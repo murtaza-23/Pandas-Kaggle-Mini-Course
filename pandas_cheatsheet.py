@@ -66,18 +66,3 @@ def func(column_name):
     return (column_name * 2)
 
 variable_name = df.column_name.apply(func)  # this will call the function and pass the column_name and modify each row value for that column
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
